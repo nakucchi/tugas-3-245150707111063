@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class PengirimanMain {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        PengirimanBarang.displayInfoLogistik();
+        System.out.println();
+
+        // Instansiasi objek menggunakan konstruktor default
+        PengirimanBarang pengiriman1 = new PengirimanBarang();
+        pengiriman1.displayPengiriman();
+        System.out.println();
+
+        // Input data dari pengguna
+        System.out.print("Masukkan nama pengirim: ");
+        String nama = input.nextLine();
+        System.out.print("Masukkan alamat tujuan: ");
+        String alamat = input.nextLine();
+        System.out.print("Masukkan berat barang (kg): ");
+        double berat = input.nextDouble();
+        System.out.print("Masukkan biaya dasar (Rp): ");
+        double biayaDasar = input.nextDouble();
+
+        PengirimanBarang pengiriman = new PengirimanBarang(nama, alamat, berat, biayaDasar);
+        pengiriman.displayPengiriman();
+        System.out.println();
+
+        System.out.print("Masukkan diskon yang didapat (persen): ");
+        double diskon = input.nextDouble();
+        System.out.print("Masukkan biaya tambahan (Rp): ");
+        double biayaTambahan = input.nextDouble();        
+        System.out.print("Masukkan jarak pengiriman (km): ");
+        int jarak = input.nextInt();
+        System.out.println();
+        
+        pengiriman.displayPengiriman();
+        System.out.println("Ongkos setelah diskon: Rp " + pengiriman.hitungOngkir(diskon));
+        System.out.println("Ongkos setelah diskon dan biaya tambahan: Rp " + pengiriman.hitungOngkir(diskon, biayaTambahan));
+        System.out.println("Ongkos berdasarkan jarak: Rp " + pengiriman.hitungOngkir(jarak));
+
+    }
+}
